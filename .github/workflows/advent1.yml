@@ -8,7 +8,8 @@ on:
 jobs:
   adventar:
     runs-on: ubuntu-latest
-
+    environment: MISSKEY_TOKEN
+    
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -29,6 +30,7 @@ jobs:
     - name: Create config.py
       env:
         MISSKEY_TOKEN: ${{ secrets.MISSKEY_TOKEN }}
+${{ secrets.SuperSecret }}
       run: |
         echo $MISSKEY_TOKEN
         echo "TOKEN = $MISSKEY_TOKEN" > config.py
