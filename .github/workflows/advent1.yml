@@ -14,8 +14,11 @@ jobs:
 
     - name: Set up Python
       uses: actions/setup-python@v2
-#      with:
-#        python-version: 3.x  # 使用したいPythonバージョンを指定してください
+      with:
+        python-version: 3.8  # 使用したいPythonバージョンを指定してください
+    - name: Install Python dependencies
+      run: |
+        pip install -r requirements.txt  # requirements.txtに依存関係が記述されていると仮定します
 
     - name: Set up environment variables
       run: |
@@ -25,14 +28,12 @@ jobs:
 
     - name: Create config.py
       run: |
-        cat <<EOL > config.py
-TOKEN = $TOKEN
-DOMAIN = 'https://misskey.systems/'
-CALENDAR_ID = 8596
-NOTE_VISIBILITY = 'public'
-SHOW_YEAR = true
-EOL
-
-
-    - name: Show config.py
-      run: cat config.py
+        echo 'TOKEN = "$TOKEN"' > config.py
+        echo 'DOMAIN = "https://misskey.systems/"' >> config.py
+        echo 'CALENDAR_ID = 8596' >> config.py
+        echo 'NOTE_VISIBILITY = "public"' >> config.py
+        echo 'SHOW_YEAR = true' >> config.py
+        
+    - name: Run run_venv.sh --dry-run
+      run: |
+        ./run_venv.sh --dry-run
