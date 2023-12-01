@@ -1,0 +1,38 @@
+name: Scheduled Run
+
+on:
+  schedule:
+    - cron: '0 12 * 12 *'  # 日本時間の12時に毎日実行されます
+
+jobs:
+  generate-config:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+#      with:
+#        python-version: 3.x  # 使用したいPythonバージョンを指定してください
+
+    - name: Set up environment variables
+      run: |
+        echo "TOKEN=$TOKEN" >> $GITHUB_ENV  # GitHub Actionsのシークレットからトークンを取得
+      env:
+        TOKEN: ${{ secrets.MISSKEY_TOKEN }}  # GitHubのシークレットからMISSKEY_TOKENを取得
+
+    - name: Create config.py
+      run: |
+        cat <<EOL > config.py
+TOKEN = $TOKEN
+DOMAIN = 'https://misskey.systems/'
+CALENDAR_ID = 8596
+NOTE_VISIBILITY = 'public'
+SHOW_YEAR = true
+EOL
+
+
+    - name: Show config.py
+      run: cat config.py
