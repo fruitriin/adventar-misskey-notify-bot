@@ -36,7 +36,7 @@ jobs:
       env:
         MISSKEY_TOKEN: ${{ secrets.MISSKEY_TOKEN }}
       run: |
-        echo 'TOKEN = "$MISSKEY_TOKEN"' > config.py
+        echo "TOKEN = $MISSKEY_TOKEN" > config.py
         echo 'DOMAIN = "https://misskey.systems/"' >> config.py
         echo 'CALENDAR_ID = 8596' >> config.py
         echo 'NOTE_VISIBILITY = "public"' >> config.py
