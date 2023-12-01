@@ -26,7 +26,7 @@ jobs:
     - name: Install Python dependencies
       run: |
         pip install -r requirements.txt  # requirements.txtに依存関係が記述されていると仮定します
-        pip3 install -U "chromedriver-binary==121"
+        pip3 install -U "chromedriver-binary==121.0.6156.0.0"
 
     - name: Create config.py
       env:
