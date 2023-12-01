@@ -33,6 +33,8 @@ jobs:
         TOKEN: ${{ secrets.MISSKEY_TOKEN }}  # GitHubのシークレットからMISSKEY_TOKENを取得
 
     - name: Create config.py
+      env:
+        MISSKEY_TOKEN: ${{ secrets.MISSKEY_TOKEN }}
       run: |
         echo 'TOKEN = "$TOKEN"' > config.py
         echo 'DOMAIN = "https://misskey.systems/"' >> config.py
