@@ -40,4 +40,4 @@ jobs:
     - run: cat config.py
     
     - run: |
-        . run_venv.sh
+        python3 adventar.py --dry-run
