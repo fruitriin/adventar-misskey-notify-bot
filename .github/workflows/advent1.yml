@@ -30,7 +30,6 @@ jobs:
     - name: Create config.py
       env:
         MISSKEY_TOKEN: ${{ secrets.MISSKEY_TOKEN }}
-${{ secrets.SuperSecret }}
       run: |
         echo $MISSKEY_TOKEN
         echo "TOKEN = $MISSKEY_TOKEN" > config.py
