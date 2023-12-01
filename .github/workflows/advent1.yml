@@ -40,4 +40,4 @@ jobs:
     - run: cat config.py
     
     - run: |
-        python3 adventar.py --dry-run
+        python3 adventar.py
