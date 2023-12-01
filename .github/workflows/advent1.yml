@@ -39,6 +39,8 @@ jobs:
         echo 'CALENDAR_ID = 8596' >> config.py
         echo 'NOTE_VISIBILITY = "public"' >> config.py
         echo 'SHOW_YEAR = "true"' >> config.py
-        
+
+    - run: cat config.py
+    
     - run: |
         python3 adventar.py --dry-run
