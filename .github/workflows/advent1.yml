@@ -20,9 +20,6 @@ jobs:
         
     - name: Create and activate virtual environment
       run: |
-        pip3 install -U virtualenv
-        virtualenv venv
-        source venv/bin/activate
         python -m pip install --upgrade pip
         
     - name: Install Python dependencies
@@ -43,6 +40,5 @@ jobs:
         echo 'NOTE_VISIBILITY = "public"' >> config.py
         echo 'SHOW_YEAR = "true"' >> config.py
         
-    - name: Run run_venv.sh --dry-run
-      run: |
-        ./run_venv.sh --dry-run
+    - run: |
+        python3 adventar.py --dry-run
