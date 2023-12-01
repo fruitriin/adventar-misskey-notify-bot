@@ -26,16 +26,11 @@ jobs:
       run: |
         pip install -r requirements.txt  # requirements.txtに依存関係が記述されていると仮定します
 
-    - name: Set up environment variables
-      run: |
-        echo "TOKEN=$TOKEN" >> $GITHUB_ENV  # GitHub Actionsのシークレットからトークンを取得
-      env:
-        TOKEN: ${{ secrets.MISSKEY_TOKEN }}  # GitHubのシークレットからMISSKEY_TOKENを取得
-
     - name: Create config.py
       env:
         MISSKEY_TOKEN: ${{ secrets.MISSKEY_TOKEN }}
       run: |
+        echo $MISSKEY_TOKEN
         echo "TOKEN = $MISSKEY_TOKEN" > config.py
         echo 'DOMAIN = "https://misskey.systems/"' >> config.py
         echo 'CALENDAR_ID = 8596' >> config.py
