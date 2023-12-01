@@ -3,7 +3,8 @@ name: Scheduled Run
 on:
   schedule:
     - cron: '10 3 1-25 12 *'  # 日本時間の12時に毎日実行されます
-
+  workflow_dispatch:
+  
 jobs:
   adventar:
     runs-on: ubuntu-latest
