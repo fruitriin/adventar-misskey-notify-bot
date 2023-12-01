@@ -2,7 +2,7 @@ name: Scheduled Run
 
 on:
   schedule:
-    - cron: '5 12 1-25 12 *'  # 日本時間の12時に毎日実行されます
+    - cron: '5 3 1-25 12 *'  # 日本時間の12時に毎日実行されます
 
 jobs:
   adventar:
